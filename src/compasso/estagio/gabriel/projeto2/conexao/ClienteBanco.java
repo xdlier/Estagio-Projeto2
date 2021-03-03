@@ -13,7 +13,7 @@ public class ClienteBanco {
 	public static ArrayList<Cliente> ListaCliente() {
 		try {
 
-			String SQL = "SELECT * FROM cliente ORDER BY nome";
+			String SQL = "SELECT * FROM cliente GROUP BY TurnoDeTreino, nome ORDER BY TurnoDeTreino, nome";
 			PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(SQL);
 			ResultSet rs = ps.executeQuery();
 			ArrayList<Cliente> clientes = new ArrayList<>();
@@ -39,7 +39,7 @@ public class ClienteBanco {
 			PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(SQL);
 			ResultSet rs = ps.executeQuery();
 
-			rs.first();
+			rs.next();
 			Cliente cliente = new Cliente(rs.getString("nome"), rs.getString("CPF"), rs.getString("TurnoDeTreino"));
 			ps.close();
 			return cliente;
