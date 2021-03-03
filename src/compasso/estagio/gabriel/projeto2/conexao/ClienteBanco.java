@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import compasso.estagio.gabriel.projeto2.funcionalidades.Cadastro;
 import compasso.estagio.gabriel.projeto2.principal.Cliente;
 
 public class ClienteBanco {
@@ -68,11 +69,16 @@ public class ClienteBanco {
 			System.out.println("Sua matricula é: " + cliente.getMatricula() + "\n");
 
 		} catch (SQLException e) {
+			if(e.getMessage().equals("Duplicate entry '13' for key 'cliente.CPF_UNIQUE'")) {
+				System.out.println("CPF já cadastrado, tente novamente.");
+				Cadastro.cadastrarCliente();
+			}
 			System.out.println("Erro ao adicionar\nErro: " + e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Erro geral" + e.getMessage());
 		}
 	}
+	
 
 	public static void excluirCliente(int matricula) {
 		try {

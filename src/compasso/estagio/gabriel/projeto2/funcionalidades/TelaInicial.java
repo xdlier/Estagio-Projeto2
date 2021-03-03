@@ -28,10 +28,11 @@ public class TelaInicial {
 			break;
 
 		case "d":
-			Cadastro.excluirCliente();
+			Deletar.excluirCliente();
 			break;
 			
 		case "e":
+			System.exit(0);
 			break;
 
 		default:

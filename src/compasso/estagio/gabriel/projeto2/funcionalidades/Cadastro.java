@@ -1,6 +1,5 @@
 package compasso.estagio.gabriel.projeto2.funcionalidades;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import compasso.estagio.gabriel.projeto2.conexao.ClienteBanco;
@@ -22,22 +21,6 @@ public class Cadastro {
 		turno = read.nextLine();
 		ClienteBanco.cadastrador(new Cliente(nome, cpf, turno));
 		TelaInicial.telaInicial();
-
-	}
-
-	public static void excluirCliente() {
-
-		try {
-			System.out.println("\nInforme a matrícula:");
-			int matricula = read.nextInt();
-			read.nextLine();
-			ClienteBanco.excluirCliente(matricula);
-			TelaInicial.telaInicial();
-		} catch (InputMismatchException e) {
-			read.nextLine();
-			System.out.println("Por favor, utilize apenas números!\n");
-			excluirCliente();
-		}
 
 	}
 }
