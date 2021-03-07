@@ -1,11 +1,10 @@
 package compasso.estagio.gabriel.projeto2.funcionalidades;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import compasso.estagio.gabriel.projeto2.conexao.ClienteBanco;
-import compasso.estagio.gabriel.projeto2.principal.Cliente;
+import compasso.estagio.gabriel.projeto2.conexao.ConsultaBanco;
+import compasso.estagio.gabriel.projeto2.conexao.ListarBanco;
 
 public class Consulta {
 
@@ -13,16 +12,7 @@ public class Consulta {
 
 	public static void consultarListaClientes() {
 
-		ArrayList<Cliente> clientes = ClienteBanco.ListaCliente();
-		System.out.println("\nOs clientes cadastrados são:");
-		if (clientes.isEmpty()) {
-			System.out.println("\nNão tem clientes cadastrados!\n");
-			TelaInicial.telaInicial();
-		}
-		for (int i = 0; i < clientes.size(); i++) {
-			System.out.println("----------------------------\nNome: " + clientes.get(i).getNome()
-					+ "\nTurno de treino: " + clientes.get(i).getTurnoDeTreino() + "\n----------------------------\n");
-		}
+		ListarBanco.ListarClientes();
 		TelaInicial.telaInicial();
 	}
 
@@ -31,13 +21,8 @@ public class Consulta {
 		try {
 			System.out.println("\nInforme a matrícula:");
 			int matricula = read.nextInt();
-			Cliente cliente = ClienteBanco.BuscaCliente(matricula);
-			System.out.println(
-					"\nO resultado da sua consulta é:\n----------------------------\nNome: " + cliente.getNome()
-							+ "\nTurno de treino: " + cliente.getTurnoDeTreino() + "\n----------------------------\n");
-			TelaInicial.telaInicial();
-		} catch (NullPointerException e) {
-			System.out.println("Nenhuma matrícula encontrada, tente novamente.\n");
+			read.nextLine();
+			ConsultaBanco.BuscarCliente(matricula, 0);
 			TelaInicial.telaInicial();
 		} catch (InputMismatchException e) {
 			read.nextLine();

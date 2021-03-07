@@ -3,7 +3,7 @@ package compasso.estagio.gabriel.projeto2.funcionalidades;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import compasso.estagio.gabriel.projeto2.conexao.ClienteBanco;
+import compasso.estagio.gabriel.projeto2.conexao.ExcluirClienteBanco;
 
 public class Deletar {
 	
@@ -15,7 +15,7 @@ public class Deletar {
 			System.out.println("\nInforme a matrícula:");
 			int matricula = read.nextInt();
 			read.nextLine();
-			ClienteBanco.excluirCliente(matricula);
+			ExcluirClienteBanco.excluirCliente(matricula);
 			TelaInicial.telaInicial();
 		} catch (InputMismatchException e) {
 			read.nextLine();

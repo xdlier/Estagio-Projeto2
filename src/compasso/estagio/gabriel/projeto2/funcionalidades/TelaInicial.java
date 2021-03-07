@@ -9,8 +9,8 @@ public class TelaInicial {
 	public static void telaInicial() {
 
 		System.out.println("Que atividade gostaria de realizar:\nA) Cadastrar cliente\n"
-				+ "B) Consultar cliente\nC) Consultar lista de clientes\nD) Excluir Cliente"
-				+ "\nE)Sair do sistema");
+				+ "B) Consultar cliente\nC) Consultar lista de clientes\nD) Excluir cliente\nE) Alterar cadastro"
+				+ "\nF)Sair do sistema");
 		String escolha = read.nextLine();
 
 		switch (escolha.toLowerCase()) {
@@ -32,6 +32,10 @@ public class TelaInicial {
 			break;
 			
 		case "e":
+			Alteracoes.alterarCadastro();
+			break;
+			
+		case "f":
 			System.exit(0);
 			break;
 
