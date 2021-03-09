@@ -1,8 +1,10 @@
 package compasso.estagio.gabriel.projeto2.funcionalidades;
 
+import javax.swing.JOptionPane;
+
 public class ValidadorCPF {
 
-	public static void Validador(String cpf) {
+	public static boolean Validador(String cpf) {
 
 		int valida1 = 0;
 		int valida2 = 0;
@@ -15,8 +17,7 @@ public class ValidadorCPF {
 				valida2 += (cpf.charAt(i) - 48) * (i);
 			}
 		} catch (StringIndexOutOfBoundsException e) {
-			System.out.println("Por favor informe o CPF completo");
-			Cadastro.cadastrarCliente();
+			JOptionPane.showMessageDialog(null,"Por favor informe o CPF completo");
 		}
 
 		valida1 %= 11;
@@ -30,8 +31,8 @@ public class ValidadorCPF {
 		}
 
 		if (valida1 == cpf.charAt(9) - 48 && valida2 == cpf.charAt(10) - 48)
-			return;
-		System.out.println("CPF inválido, tente novamente!\n");
-		Cadastro.cadastrarCliente();
+			return true;
+		JOptionPane.showMessageDialog(null,"CPF inválido, tente novamente!\n");
+		return false;
 	}
 }

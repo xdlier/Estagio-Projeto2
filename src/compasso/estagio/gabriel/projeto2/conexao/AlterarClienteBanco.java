@@ -3,26 +3,26 @@ package compasso.estagio.gabriel.projeto2.conexao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import compasso.estagio.gabriel.projeto2.funcionalidades.Alteracoes;
+import javax.swing.JOptionPane;
 
 public class AlterarClienteBanco {
 	
 	public static void alterarNomeCliente(int matricula, String novo) {
 
 		String SQL = "UPDATE cliente SET nome = ? WHERE matricula = " + matricula;
-
+		
 		try {
 
 			PreparedStatement ps = ConexaoBanco.getConnection().prepareStatement(SQL);
 			ps.setString(1, novo);
 			ps.execute();
 			ps.close();
-			System.out.println("\nAlteração realizada com sucesso.");
+			JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso.");
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao recuperar\nErro: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro ao recuperar\nErro: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Erro geral" + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro geral \nErro: " + e.getMessage());
 		}
 	}
 	
@@ -36,12 +36,12 @@ public class AlterarClienteBanco {
 			ps.setString(1, novo);
 			ps.execute();
 			ps.close();
-			System.out.println("\nAlteração realizada com sucesso.");
+			JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso.");
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao recuperar\nErro: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro ao recuperar\nErro: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("Erro geral" + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro geral \nErro: " + e.getMessage());
 		}
 	}
 

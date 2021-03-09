@@ -3,7 +3,7 @@ package compasso.estagio.gabriel.projeto2.conexao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import compasso.estagio.gabriel.projeto2.funcionalidades.Cadastro;
+import javax.swing.JOptionPane;
 
 public class CadastroBanco{
 	
@@ -20,17 +20,12 @@ public class CadastroBanco{
 			ps.setString(4, turno);
 			ps.execute();
 			ps.close();
-			System.out.println("\nCadastro realizado com sucesso.");
-			System.out.println("Sua matricula é: " + matricula + "\n");
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.\nSua matricula é:" + matricula);
 
 		} catch (SQLException e) {
-			if (e.getMessage().equals("Duplicate entry '13' for key 'cliente.CPF_UNIQUE'")) {
-				System.out.println("CPF já cadastrado, tente novamente.\n");
-				Cadastro.cadastrarCliente();
-			}
-			System.out.println("Erro ao adicionar\nErro: " + e.getMessage());
+				JOptionPane.showMessageDialog(null, "CPF já cadastrado, tente novamente.");
 		} catch (Exception e) {
-			System.out.println("Erro geral" + e.getMessage());
+			JOptionPane.showMessageDialog(null, "Erro geral\nErro: " + e.getMessage());
 		}
 	}
 
